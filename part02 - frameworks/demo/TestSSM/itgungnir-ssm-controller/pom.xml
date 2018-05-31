@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 当前Module所在父Project的信息 -->
+    <parent>
+        <groupId>my.itgungnir</groupId>
+        <artifactId>itgungnir-ssm</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- 当前Module的名称 -->
+    <artifactId>itgungnir-ssm-controller</artifactId>
+
+    <!-- 其它Module打包时都是直接打成JAR包 -->
+    <!-- 由于这个Module需要直接挂到服务器上，因此需要打成WAR包 -->
+    <!-- name和url表示目标WAR包的基本信息 -->
+    <packaging>war</packaging>
+    <name>itgungnir-ssm-controller Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <build>
+        <finalName>itgungnir-ssm-controller</finalName>
+    </build>
+
+    <dependencies>
+        <!-- Service层的依赖 -->
+        <dependency>
+            <groupId>my.itgungnir</groupId>
+            <artifactId>itgungnir-ssm-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 在不同开发模式下，使用不同的数据库和日志配置 -->
+    <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <log.path>D:/logs/ssm.itgungnir.com</log.path>
+                <log.level>DEBUG</log.level>
+                <log.ConversionPattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%C{1},%M\(\),%L] [%X{logid}] - %m%n</log.ConversionPattern>
+                <log.maxHistory>24</log.maxHistory>
+                <log.totalSizeCap>512MB</log.totalSizeCap>
+                <master.mysql.url>jdbc:mysql://127.0.0.1:3306/test</master.mysql.url>
+                <master.mysql.user>root</master.mysql.user>
+                <master.mysql.password>root</master.mysql.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>production</id>
+            <properties>
+                <log.path>/export/Logs/ssm.itgungnir.com</log.path>
+                <log.level>INFO</log.level>
+                <log.ConversionPattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] [%C{1},%M\(\),%L] [%X{logid}] - %m%n</log.ConversionPattern>
+                <log.maxHistory>24</log.maxHistory>
+                <log.totalSizeCap>2GB</log.totalSizeCap>
+                <master.mysql.url><![CDATA[jdbc:mysql://my15736m.mysql.jddb.com:3358/paimai_biz?useUnicode=true&amp;characterEncoding=UTF-8]]></master.mysql.url>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

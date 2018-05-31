@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="itgungnir-ssm-controller:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/itgungnir_ssm_controller_war_exploded2</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="itgungnir-ssm-controller/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="itgungnir-ssm-controller" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

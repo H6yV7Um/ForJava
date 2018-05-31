@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="defaultStatementTimeout" value="15"/>
+    </settings>
+
+    <!-- 别名，通过指定包来批量设置 -->
+    <typeAliases>
+        <package name="my.itgungnir.ssm.entity"/>
+    </typeAliases>
+
+</configuration>
